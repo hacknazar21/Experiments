@@ -1,6 +1,6 @@
-const G = 0.05;
-const P = 0.5;
-const COLLAPSE_LENGTH = 0.001;
+const G = 0.4;
+const P = 1;
+const COLLAPSE_LENGTH = 0.00001;
 const canvas = new Canvas();
 
 let particles = [];
@@ -9,31 +9,22 @@ let particles = [];
 const centerX = canvas.view.width / 2;
 const centerY = canvas.view.height / 2;
 
-for (let i = 0; i < 300; i++) {
+for (let i = 0; i < 400; i++) {
 	if (i == 0) {
 		particles.push(
 			new Particle({
 				x: centerX,
 				y: centerY,
-				mass: -250,
+				mass: 10,
 			})
 		);
 	}
-	else if (i % 100 == 0)
-		particles.push(
-			new Particle({
-				x: getRandomBetween(0, canvas.view.width),
-				y: getRandomBetween(0, canvas.view.height),
-				mass: getRandomBetween(100 * (canvas.view.width / canvas.view.height), 200 * (canvas.view.width / canvas.view.height)),
-			})
-		);
-
 	else
 		particles.push(
 			new Particle({
 				x: getRandomBetween(0, canvas.view.width),
 				y: getRandomBetween(0, canvas.view.height),
-				mass: getRandomBetween(1 * (canvas.view.width / canvas.view.height), 5 * (canvas.view.width / canvas.view.height)),
+				mass: getRandomBetween(1 * (canvas.view.width / canvas.view.height), 6 * (canvas.view.width / canvas.view.height)),
 			})
 		);
 }
