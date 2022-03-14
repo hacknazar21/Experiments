@@ -16,6 +16,7 @@ class Canvas {
 	}
 
 	draw() {
+
 		this.context.fillStyle = 'rgba(0,0,0,0.1)';
 		this.context.fillRect(0, 0, this.view.width, this.view.height);
 		for (const item of this.container) {

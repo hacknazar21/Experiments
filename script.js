@@ -1,21 +1,43 @@
 const G = 0.05;
-const P = 10;
+const P = 0.5;
 const COLLAPSE_LENGTH = 0.001;
 const canvas = new Canvas();
 
 let particles = [];
 
-for (let i = 0; i < 300; i++) {
-	particles.push(
-		new Particle({
-			x: getRandomBetween(0, canvas.view.width),
-			y: getRandomBetween(0, canvas.view.height),
-			mass: getRandomBetween(-50 * (canvas.view.width / canvas.view.height), 200 * (canvas.view.width / canvas.view.height)),
-		})
-	);
-}
+
 const centerX = canvas.view.width / 2;
 const centerY = canvas.view.height / 2;
+
+for (let i = 0; i < 300; i++) {
+	if (i == 0) {
+		particles.push(
+			new Particle({
+				x: centerX,
+				y: centerY,
+				mass: -250,
+			})
+		);
+	}
+	else if (i % 100 == 0)
+		particles.push(
+			new Particle({
+				x: getRandomBetween(0, canvas.view.width),
+				y: getRandomBetween(0, canvas.view.height),
+				mass: getRandomBetween(100 * (canvas.view.width / canvas.view.height), 200 * (canvas.view.width / canvas.view.height)),
+			})
+		);
+
+	else
+		particles.push(
+			new Particle({
+				x: getRandomBetween(0, canvas.view.width),
+				y: getRandomBetween(0, canvas.view.height),
+				mass: getRandomBetween(1 * (canvas.view.width / canvas.view.height), 5 * (canvas.view.width / canvas.view.height)),
+			})
+		);
+}
+
 
 canvas.add(...particles);
 
@@ -64,6 +86,8 @@ function tick() {
 	for (const particle of particles) {
 		particle.speed.add(particle.acceleration);
 		particle.position.add(particle.speed);
+
+
 	}
 
 	const newParticles = [];
@@ -85,7 +109,7 @@ function tick() {
 
 			const diff = Vector.getDiff(a.position, b.position);
 
-			if (diff.length < (a.r + b.r) / 2) {
+			if (diff.length < (a.r + b.r)) {
 				const mass = a.mass + b.mass;
 
 				const newParticle = new Particle({ mass });
