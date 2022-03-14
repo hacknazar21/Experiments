@@ -25,7 +25,7 @@ class Particle {
 			x: this.position.x,
 			y: this.position.y,
 			r: this.r,
-			fillStyle: this.mass > 0 ? `rgba(255,${getNewRange(0, 4000, 0, 255, this.mass)},0,1)` : "green",
+			fillStyle: this.mass > 0 ? `rgba(255,${getNewRange(0, 1000, 0, 255, this.mass)},0,1)` : "green",
 		});
 
 		/* if (this.drawSpeed) {
