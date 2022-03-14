@@ -56,8 +56,8 @@ function tick() {
 		const force = particle.force;
 
 		particle.acceleration = new Vector(
-			force.x / particle.mass,
-			force.y / particle.mass
+			force.x / (particle.mass * 50),
+			force.y / (particle.mass * 50)
 		);
 	}
 
